@@ -1,0 +1,27 @@
+<div id="{{mojit_view_id}}">
+
+    {{#if nohangout}}
+        Sorry, no hangouts for this week
+    {{else}}
+        {{{pagecontent}}}
+
+        <!-- hangout info: -->
+        <h2>{{{title}}}</h2>
+
+        {{#if attendees}}
+            <ul>
+            {{#each attendees}}
+                <li>
+                    {{name}}
+                </li>
+            {{/each}}
+            </ul>
+        {{/if}}
+
+        {{{weathertitle}}}
+        <br>
+        {{{weather}}}
+    {{/if}}
+
+</div>
+

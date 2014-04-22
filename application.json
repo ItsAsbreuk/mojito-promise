@@ -1,0 +1,36 @@
+[
+    {
+        "settings": [ "master" ],
+        "specs": {
+              "home": {
+                "type" : "HTMLFrameMojit",
+                "config": {
+                  "deploy": true,
+                  "title": "Promises in Mojito",
+                  "child" : {
+                      "type" : "Home"
+                  },
+                  "assets": {
+                      "top": {
+                          "css": [
+                              "http://yui.yahooapis.com/pure/0.4.2/pure-min.css"
+                          ]
+                      }
+                  }
+                }
+              },
+            "page2": {
+                "type": "Page2"
+            },
+            "page3": {
+                "type": "Page3"
+            }
+        }
+    },
+    {
+        "settings": [ "environment:development" ],
+        "staticHandling": {
+            "forceUpdate": true
+        }
+    }
+]

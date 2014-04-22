@@ -1,0 +1,16 @@
+<div id="{{mojit_view_id}}">
+    {{{pagecontent}}}
+
+    {{#if newsitems}}
+        <ul>
+        {{#each newsitems}}
+            <li>
+                {{title}} <!-- title has css display:block; -->
+                {{news}}
+            </li>
+        {{/each}}
+        </ul>
+    {{/if}}
+
+</div>
+

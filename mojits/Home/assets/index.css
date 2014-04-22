@@ -1,0 +1,26 @@
+body {
+    padding: 2em;
+}
+
+.pure-button.button-inline {
+    display: block;
+    margin: 1em 0;
+    border: solid 1px #666;
+}
+
+.container {
+    border: solid 1px #000;
+    background-color: #DDD;
+    width: 30em;
+    height: 23em;
+    display: inline-block;
+    *display: block;
+    *zoom: 1;
+    vertical-align: top;
+    margin-right: 1em;
+    padding: 1em;
+}
+
+.container.hidden {
+    visibility: hidden;
+}
