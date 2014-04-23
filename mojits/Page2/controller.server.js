@@ -68,6 +68,7 @@ YUI.add('page2', function(Y, NAME) {
                      * }
                      *
                      */
+                    ac.assets.addCss('./index.css');
                     ac.done(response);
                 }
             ).catch(
@@ -77,4 +78,4 @@ YUI.add('page2', function(Y, NAME) {
 
     };
 
-}, '0.0.1', {requires: ['mojito', 'mojito-models-addon', 'promise']});
+}, '0.0.1', {requires: ['mojito', 'mojito-models-addon', 'mojito-assets-addon', 'promise']});

@@ -8,17 +8,23 @@ body {
     border: solid 1px #666;
 }
 
+h2 {
+    color: #30418C;
+    margin-bottom: 1.2em;
+}
+
 .container {
-    border: solid 1px #000;
-    background-color: #DDD;
-    width: 30em;
-    height: 23em;
+    border: solid 1px #30418C;
+    background-color: #D4D5E3;
+    width: 26em;
+    height: 24em;
     display: inline-block;
     *display: block;
     *zoom: 1;
     vertical-align: top;
     margin-right: 1em;
-    padding: 1em;
+    margin-top: 2em;
+    padding: 1em 2em;
 }
 
 .container.hidden {

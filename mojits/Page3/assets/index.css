@@ -1,2 +1,32 @@
-dt { font-weight: bold; }
-.sel { background-color: #FF4; }
+body {
+    padding: 2em;
+}
+
+ul {
+    list-style: none;
+    width: 11em;
+    padding: 0;
+}
+
+li {
+    border: solid 1px #30418C;
+    border-radius: 1em;
+    background-color: #D4D5E3;
+    margin-bottom: 1em;
+    padding: 0.5em 1em;
+}
+
+h2 {
+    font-size: 1.1em;
+    padding-bottom: 0.2em;
+    color: #30418C;
+}
+
+.container {
+    border: solid 1px #30418C;
+    background-color: #D4D5E3;
+    width: 26em;
+    display: block;
+    margin-top: 2em;
+    padding: 1em 2em;
+}

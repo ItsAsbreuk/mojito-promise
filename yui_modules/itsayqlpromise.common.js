@@ -17,14 +17,14 @@ YUI.add('itsayqlpromise', function (Y, NAME) {
      * @return {Y.Promise}
      */
     Y.YQLPromise = function(sql, params, opts) {
-        return new Y.Promise(function(resolve, reject) {
+        return new Y.Promise(function(fulfill, reject) {
             new Y.YQLRequest(sql, function(r) {
                 // this is YQL's callback function
 /*jshint expr:true */
                 r.error && reject(r.error.description || DEFAULT_ERROR_DESC);
                 opts && opts.rejectOnEmpty && r.query && (r.query.count===0) && reject(NO_RECORDS);
 /*jshint expr:false */
-                resolve(r);
+                fulfill(r);
             }, params, opts).send();
         });
     };

@@ -156,13 +156,13 @@ Y.mix(DatabaseConnection.prototype, {
             generateQueryPromise, connectionQuery;
 
         connectionQuery = function(connection) {
-            return new Y.Promise(function (resolve, reject) {
+            return new Y.Promise(function (fulfill, reject) {
                 var callBack = function(err, result, fields) {
                         if (err) {
                             // if error equals a 'loast connection', then re-init the promise-query, else throw an error
                             // see https://github.com/felixge/node-mysql#server-disconnects
 /*jshint expr:true */
-                            (err.code===LOST_CONNECTION) ? resolve(generateQueryPromise()) : reject(err);
+                            (err.code===LOST_CONNECTION) ? fulfill(generateQueryPromise()) : reject(err);
 /*jshint expr:false */
                             // Its is said: No need to worry about releasing the connection:
                             // With Pool, disconnected connections will be removed from the pool freeing up space
@@ -171,7 +171,7 @@ Y.mix(DatabaseConnection.prototype, {
                             connection.release();
                         }
                         else {
-                            resolve({
+                            fulfill({
                                 result: result,
                                 fields: fields
                             });
@@ -331,7 +331,7 @@ Y.mix(DatabaseConnection.prototype, {
 
     /**
      * Gets a connection from the connectionPool, returning a Promise.
-     * When retreived a valid connection, the promise is resolved, passing the connection.
+     * When retreived a valid connection, the promise is fulfilled, passing the connection.
      *
      * @method _getConnectionPromise
      * @private
@@ -339,10 +339,10 @@ Y.mix(DatabaseConnection.prototype, {
     **/
     _getConnectionPromise: function() {
         var instance = this;
-        return new Y.Promise(function (resolve, reject) {
+        return new Y.Promise(function (fulfill, reject) {
             instance._pool.getConnection(function(err, connection) {
 /*jshint expr:true */
-                err ? reject(new Error(err)) : resolve(connection);
+                err ? reject(new Error(err)) : fulfill(connection);
 /*jshint expr:false */
             });
         });

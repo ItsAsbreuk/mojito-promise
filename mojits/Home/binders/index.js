@@ -25,13 +25,13 @@ YUI.add('home-binder-index', function(Y, NAME) {
 
         invokePromise: function(action, options) {
             var instance = this;
-            return new Y.Promise(function (resolve, reject) {
+            return new Y.Promise(function (fulfill, reject) {
                 instance.mojitProxy.invoke(
                     action,
                     options,
                     function(err, data) {
                         err && reject(err);
-                        resolve(data);
+                        fulfill(data);
                     }
                 );
             });

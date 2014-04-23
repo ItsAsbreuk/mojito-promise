@@ -1,2 +1,23 @@
-dt { font-weight: bold; }
-.sel { background-color: #FF4; }
+body {
+    padding: 2em;
+}
+
+ul {
+    list-style: none;
+    width: 30em;
+    padding: 0;
+}
+
+li {
+    border: solid 1px #30418C;
+    border-radius: 1em;
+    background-color: #D4D5E3;
+    margin-top: 1.5em;
+    padding: 0.2em 2em 0.8em;
+}
+
+h2 {
+    font-size: 1.1em;
+    padding-bottom: 0.2em;
+    color: #30418C;
+}

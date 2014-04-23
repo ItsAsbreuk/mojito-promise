@@ -51,16 +51,17 @@ YUI.add('page3', function(Y, NAME) {
         index: function(ac) {
             var route = '/page3.html',
                 weeknr = 17;
-            Y.Promise.all([
+            Y.Promise.allResolved([
                 ac.models.get('pagecontents').getPageContent(route),
                 ac.models.get('hangouts').getHangoutInfo(weeknr),
                 Y.YQLPromise('select * from weather.forecast where woeid=2502265')
             ]).then(
-                function(responseHash) {
-                    var pagecontentrecord = responseHash[0],
-                        hangoutrecord = responseHash[1],
-                        yqlrecord = responseHash[2],
-                        weatheritem = yqlrecord.query.results.channel.item;
+                function(response) {
+                    var fulfilledHash = response.fulfilled;
+                        pagecontentrecord = fulfilledHash[0],
+                        hangoutrecord = fulfilledHash[1],
+                        yqlrecord = fulfilledHash[2],
+                        weatheritem = yqlrecord && yqlrecord.query.results.channel.item;
                     /*
                      * response = {
                      *     pagecontent: '....',
@@ -74,12 +75,17 @@ YUI.add('page3', function(Y, NAME) {
                      * }
                      *
                      */
+
+                    ac.assets.addCss('./index.css');
+                    // Cautious: fulfilledHash might return 'null' for its individual promises (in case of error)
+                    // therefore, you can't call its properties without checking if they are valid.
+                    // meaning: don't use "hangoutrecord.title", but "hangoutrecord && hangoutrecord.title" instead
                     ac.done({
-                        pagecontent: pagecontentrecord.pagecontent,
-                        title: hangoutrecord.title,
-                        attendees: hangoutrecord.attendees,
-                        weathertitle: weatheritem.title,
-                        weather: weatheritem.description
+                        pagecontent: pagecontentrecord && pagecontentrecord.pagecontent,
+                        title: hangoutrecord && hangoutrecord.title,
+                        attendees: hangoutrecord && hangoutrecord.attendees,
+                        weathertitle: weatheritem && weatheritem.title,
+                        weather: weatheritem && weatheritem.description
                     });
                 }
             ).catch(
@@ -89,4 +95,4 @@ YUI.add('page3', function(Y, NAME) {
 
     };
 
-}, '0.0.1', {requires: ['mojito', 'mojito-models-addon', 'promise', 'itsayqlpromise']});
+}, '0.0.1', {requires: ['mojito', 'mojito-models-addon', 'mojito-assets-addon', 'itsapromise', 'itsayqlpromise']});
