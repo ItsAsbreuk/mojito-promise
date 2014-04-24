@@ -3,7 +3,7 @@ mojito-promise
 
 Example of how to use Promises in Mojito
 
-Example can be seen at these pages:
+Running examples can be seen at these pages (until end of April):
 
 [Home Mojit](http://temp.itsasbreuk.nl)
 
